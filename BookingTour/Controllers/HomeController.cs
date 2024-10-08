@@ -17,7 +17,11 @@ namespace BookingTour.Controllers
         {
             return View();
         }
-		public IActionResult natrz()
+        public IActionResult Index1()
+        {
+            return View();
+        }
+        public IActionResult natrz()
 		{
 			return View();
 		}

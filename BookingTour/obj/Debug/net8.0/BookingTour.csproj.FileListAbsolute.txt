@@ -58,3 +58,4 @@ C:\DACN_2024\BookingTour\BookingTour\obj\Debug\net8.0\refint\BookingTour.dll
 C:\DACN_2024\BookingTour\BookingTour\obj\Debug\net8.0\BookingTour.pdb
 C:\DACN_2024\BookingTour\BookingTour\obj\Debug\net8.0\BookingTour.genruntimeconfig.cache
 C:\DACN_2024\BookingTour\BookingTour\obj\Debug\net8.0\ref\BookingTour.dll
+C:\DACN_2024\BookingTour\BookingTour\obj\Debug\net8.0\BookingTour.sourcelink.json
