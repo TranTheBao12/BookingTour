@@ -1,11 +1,19 @@
 is_global = true
 build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BookingTour
 build_property.RootNamespace = BookingTour
@@ -17,6 +25,86 @@ build_property.SupportLocalizedComponentNames =
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\DACN_2024\BookingTour\BookingTour
 build_property._RazorSourceGeneratorDebug = 
+
+[C:/DACN_2024/BookingTour/BookingTour/HoTroKhachHang/xemcauhoithuonggap.cshtml]
+build_metadata.AdditionalFiles.TargetPath = SG9Ucm9LaGFjaEhhbmdceGVtY2F1aG9pdGh1b25nZ2FwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/DACN_2024/BookingTour/BookingTour/HoTroKhachHang/yeucauhotro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = SG9Ucm9LaGFjaEhhbmdceWV1Y2F1aG90cm8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/DACN_2024/BookingTour/BookingTour/QuanLyBaiViet/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVhbkx5QmFpVmlldFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/DACN_2024/BookingTour/BookingTour/QuanLyBinhLuan/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVhbkx5QmluaEx1YW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/DACN_2024/BookingTour/BookingTour/QuanLyDanhMuc/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVhbkx5RGFuaE11Y1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/DACN_2024/BookingTour/BookingTour/QuanLyDatTour/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVhbkx5RGF0VG91clxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/DACN_2024/BookingTour/BookingTour/QuanLyKhuyenMai/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVhbkx5S2h1eWVuTWFpXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/DACN_2024/BookingTour/BookingTour/QuanLyTaiKhoan/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVhbkx5VGFpS2hvYW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/DACN_2024/BookingTour/BookingTour/QuanLyThanhToan/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVhbkx5VGhhbmhUb2FuXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/DACN_2024/BookingTour/BookingTour/QuanLyTour/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVhbkx5VG91clxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/DACN_2024/BookingTour/BookingTour/ViewsAdmin - Copy/HoTroKhachHang/xemcauhoithuonggap.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NBZG1pbiAtIENvcHlcSG9Ucm9LaGFjaEhhbmdceGVtY2F1aG9pdGh1b25nZ2FwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/DACN_2024/BookingTour/BookingTour/ViewsAdmin - Copy/HoTroKhachHang/yeucauhotro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NBZG1pbiAtIENvcHlcSG9Ucm9LaGFjaEhhbmdceWV1Y2F1aG90cm8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/DACN_2024/BookingTour/BookingTour/ViewsAdmin - Copy/QuanLyBaiViet/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NBZG1pbiAtIENvcHlcUXVhbkx5QmFpVmlldFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/DACN_2024/BookingTour/BookingTour/ViewsAdmin - Copy/QuanLyBinhLuan/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NBZG1pbiAtIENvcHlcUXVhbkx5QmluaEx1YW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/DACN_2024/BookingTour/BookingTour/ViewsAdmin - Copy/QuanLyDanhMuc/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NBZG1pbiAtIENvcHlcUXVhbkx5RGFuaE11Y1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/DACN_2024/BookingTour/BookingTour/ViewsAdmin - Copy/QuanLyDatTour/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NBZG1pbiAtIENvcHlcUXVhbkx5RGF0VG91clxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/DACN_2024/BookingTour/BookingTour/ViewsAdmin - Copy/QuanLyKhuyenMai/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NBZG1pbiAtIENvcHlcUXVhbkx5S2h1eWVuTWFpXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/DACN_2024/BookingTour/BookingTour/ViewsAdmin - Copy/QuanLyTaiKhoan/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NBZG1pbiAtIENvcHlcUXVhbkx5VGFpS2hvYW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/DACN_2024/BookingTour/BookingTour/ViewsAdmin - Copy/QuanLyThanhToan/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NBZG1pbiAtIENvcHlcUXVhbkx5VGhhbmhUb2FuXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/DACN_2024/BookingTour/BookingTour/ViewsAdmin - Copy/QuanLyTour/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NBZG1pbiAtIENvcHlcUXVhbkx5VG91clxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
 
 [C:/DACN_2024/BookingTour/BookingTour/Views/HomeAdminController1/IndexAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZUFkbWluQ29udHJvbGxlcjFcSW5kZXhBZG1pbi5jc2h0bWw=

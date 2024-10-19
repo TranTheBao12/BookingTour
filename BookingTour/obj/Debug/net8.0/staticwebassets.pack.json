@@ -321,6 +321,26 @@
       "PackagePath": "staticwebassets\\js\\typed.js"
     },
     {
+      "Id": "C:\\DACN_2024\\BookingTour\\BookingTour\\wwwroot\\layoutAdmin\\LICENSE.md",
+      "PackagePath": "staticwebassets\\layoutAdmin\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\DACN_2024\\BookingTour\\BookingTour\\wwwroot\\layoutAdmin\\README.md",
+      "PackagePath": "staticwebassets\\layoutAdmin\\README.md"
+    },
+    {
+      "Id": "C:\\DACN_2024\\BookingTour\\BookingTour\\wwwroot\\layoutAdmin\\bower.json",
+      "PackagePath": "staticwebassets\\layoutAdmin\\bower.json"
+    },
+    {
+      "Id": "C:\\DACN_2024\\BookingTour\\BookingTour\\wwwroot\\layoutAdmin\\compilerconfig.json",
+      "PackagePath": "staticwebassets\\layoutAdmin\\compilerconfig.json"
+    },
+    {
+      "Id": "C:\\DACN_2024\\BookingTour\\BookingTour\\wwwroot\\layoutAdmin\\compilerconfig.json.defaults",
+      "PackagePath": "staticwebassets\\layoutAdmin\\compilerconfig.json.defaults"
+    },
+    {
       "Id": "C:\\DACN_2024\\BookingTour\\BookingTour\\wwwroot\\layoutAdmin\\css\\materialize.css",
       "PackagePath": "staticwebassets\\layoutAdmin\\css\\materialize.css"
     },
@@ -563,6 +583,10 @@
     {
       "Id": "C:\\DACN_2024\\BookingTour\\BookingTour\\wwwroot\\layoutAdmin\\documentation\\templates\\plugins.html",
       "PackagePath": "staticwebassets\\layoutAdmin\\documentation\\templates\\plugins.html"
+    },
+    {
+      "Id": "C:\\DACN_2024\\BookingTour\\BookingTour\\wwwroot\\layoutAdmin\\favicon.ico",
+      "PackagePath": "staticwebassets\\layoutAdmin\\favicon.ico"
     },
     {
       "Id": "C:\\DACN_2024\\BookingTour\\BookingTour\\wwwroot\\layoutAdmin\\images\\animation-bg.jpg",
@@ -907,6 +931,14 @@
     {
       "Id": "C:\\DACN_2024\\BookingTour\\BookingTour\\wwwroot\\layoutAdmin\\js\\script.js",
       "PackagePath": "staticwebassets\\layoutAdmin\\js\\script.js"
+    },
+    {
+      "Id": "C:\\DACN_2024\\BookingTour\\BookingTour\\wwwroot\\layoutAdmin\\package-lock.json",
+      "PackagePath": "staticwebassets\\layoutAdmin\\package-lock.json"
+    },
+    {
+      "Id": "C:\\DACN_2024\\BookingTour\\BookingTour\\wwwroot\\layoutAdmin\\package.json",
+      "PackagePath": "staticwebassets\\layoutAdmin\\package.json"
     },
     {
       "Id": "C:\\DACN_2024\\BookingTour\\BookingTour\\wwwroot\\layoutAdmin\\pages\\changelogs.html",

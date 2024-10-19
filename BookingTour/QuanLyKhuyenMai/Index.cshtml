@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "IndexAdmin.html";
+    Layout = "_LayoutAdmin";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="header">
+                    <h2>
+                        QUẢN LÝ KHUYẾN MÃI
+                        <small>Quản lý thông tin khuyến mãi</small>
+                    </h2>
+                    <ul class="header-dropdown m-r--5">
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="material-icons">more_vert</i>
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <li><a href="/Promotion/Create" class=" waves-effect waves-block">Thêm Khuyến Mãi</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="body">
+                    <a href="/Promotion/Create" class="btn btn-primary m-b-15">Thêm Khuyến Mãi</a>
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tên Khuyến Mãi</th>
+                                <th>Giá Trị Giảm Giá (%)</th>
+                                <th>Ngày Bắt Đầu</th>
+                                <th>Ngày Kết Thúc</th>
+                                <th>Hành Động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           @*  @foreach (var promotion in Model)
+                            {
+                                <tr>
+                                    <td>@promotion.Id</td>
+                                    <td>@promotion.Name</td>
+                                    <td>@promotion.DiscountValue</td>
+                                    <td>@promotion.StartDate.ToString("dd/MM/yyyy")</td>
+                                    <td>@promotion.EndDate.ToString("dd/MM/yyyy")</td>
+                                    <td>
+                                        <a href="/Promotion/Edit/@promotion.Id" class="btn btn-warning">Sửa</a>
+                                        <a href="/Promotion/Delete/@promotion.Id" class="btn btn-danger">Xóa</a>
+                                    </td>
+                                </tr>
+
+                            } *@
+                            <a href="" class="btn btn-warning">Sửa</a>
+                            <a href="" class="btn btn-danger">Xóa</a>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
