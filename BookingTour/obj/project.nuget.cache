@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "kajWi49qZKKLUGVHR2Qfak0l3gDVPS+tskBeavXA2OiCX2lS4pDUS6xHaFFFdF4hfL+2/pV5CpiuRIQLCiSccA==",
+  "dgSpecHash": "qX8X8gqOIbkFPHY3XH0Mcb67mnAcFNFsBy4BgVjKV7g8Its8t45IcbiwrtXhKzqaTQCmQHzLG7/a/wDg/phHyQ==",
   "success": true,
   "projectFilePath": "C:\\DACN_2024\\BookingTour\\BookingTour\\BookingTour.csproj",
   "expectedPackageFiles": [
@@ -194,7 +194,9 @@
     "C:\\Users\\USER\\.nuget\\packages\\system.threading.tasks.dataflow\\7.0.0\\system.threading.tasks.dataflow.7.0.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512",
-    "C:\\Users\\USER\\.nuget\\packages\\twilio\\7.6.0\\twilio.7.6.0.nupkg.sha512"
+    "C:\\Users\\USER\\.nuget\\packages\\twilio\\7.6.0\\twilio.7.6.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\x.pagedlist\\10.5.7\\x.pagedlist.10.5.7.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\x.pagedlist.mvc.core\\10.5.7\\x.pagedlist.mvc.core.10.5.7.nupkg.sha512"
   ],
   "logs": []
 }

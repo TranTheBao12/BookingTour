@@ -1,0 +1,77 @@
+﻿@model IEnumerable<BookingTour.Models.Promotion>
+
+@{
+    ViewData["Title"] = "Danh sách khuyến mãi";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="card">
+        <div class="header">
+            <h2>
+                DANH SÁCH KHUYẾN MÃI
+                <small>Danh sách các chương trình khuyến mãi trong hệ thống</small>
+            </h2>
+        </div>
+        <div class="body table-responsive">
+            <p>
+                <a class="btn btn-primary"  asp-action="Create" asp-controller="Promotions">Tạo khuyến mãi mới</a>
+            </p>
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Tên Khuyến mãi</th>
+                        <th>Mô tả</th>
+                        <th>Ngày bắt đầu</th>
+                        <th>Ngày kết thúc</th>
+                        <th>Mức giảm giá</th>
+                        <th>Điều kiện áp dụng</th>
+                        <th>Trạng thái</th>
+                        <th>Khách sạn</th>
+                        <th>Tour</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var promotion in Model)
+                    {
+                        <tr>
+                            <td>@promotion.Name</td>
+                            <td>@promotion.Description</td>
+                            <td>@promotion.StartDate?.ToString("dd/MM/yyyy")</td>
+                            <td>@promotion.EndDate?.ToString("dd/MM/yyyy")</td>
+                            <td>@promotion.DiscountAmount</td>
+                            <td>@promotion.EligibilityCriteria</td>
+                            <td>@promotion.Status</td>
+                            <td>@promotion.IdHotelNavigation?.Name</td> <!-- Hiển thị tên khách sạn -->
+                            <td>@promotion.IdTourNavigation?.Name</td> <!-- Hiển thị tên tour -->
+                            <td>
+                                <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@promotion.IdPmt">Chi tiết</a> |
+                                <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@promotion.IdPmt">Chỉnh sửa</a> |
+                                <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@promotion.IdPmt">Xóa</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <!-- Phân trang -->
+            <div class="pagination-wrapper">
+                <ul class="pagination">
+                    <li class="paginate_button previous @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
+                        <a href="@Url.Action("Index", new { page = ViewBag.CurrentPage - 1 })">Trước</a>
+                    </li>
+                    @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                    {
+                        <li class="paginate_button @(i == ViewBag.CurrentPage ? "active" : "")">
+                            <a href="@Url.Action("Index", new { page = i })">@i</a>
+                        </li>
+                    }
+                    <li class="paginate_button next @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
+                        <a href="@Url.Action("Index", new { page = ViewBag.CurrentPage + 1 })">Tiếp theo</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

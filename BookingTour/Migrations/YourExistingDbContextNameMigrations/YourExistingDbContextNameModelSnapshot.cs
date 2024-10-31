@@ -95,6 +95,15 @@ namespace BookingTour.Migrations.YourExistingDbContextNameMigrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Age")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AvatarUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -137,6 +146,9 @@ namespace BookingTour.Migrations.YourExistingDbContextNameMigrations
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("fullname")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -629,6 +641,22 @@ namespace BookingTour.Migrations.YourExistingDbContextNameMigrations
                     b.HasIndex("IdTour");
 
                     b.ToTable("PROMOTION", (string)null);
+                });
+
+            modelBuilder.Entity("BookingTour.Models.PromotionUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<long>("IdPmt")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PromotionUser");
                 });
 
             modelBuilder.Entity("BookingTour.Models.Report", b =>

@@ -27,7 +27,7 @@ public partial class YourExistingDbContextName : DbContext
     public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
 
     public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
-
+  
     public virtual DbSet<Booking> Bookings { get; set; }
 
     public virtual DbSet<BookingStatus> BookingStatuses { get; set; }
@@ -436,9 +436,11 @@ public partial class YourExistingDbContextName : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__PAYMENT_I__ID_PA__24D2692A");
         });
+       
 
         modelBuilder.Entity<Promotion>(entity =>
         {
+            
             entity.HasKey(e => e.IdPmt).HasName("pk_PROMOTION");
 
             entity.ToTable("PROMOTION");

@@ -28,11 +28,8 @@ public partial class Tour
     public long IdTrans { get; set; }
 
     public long IdHotel { get; set; }
-    public string ApprovalStatus { get; set; } = "Chờ duyệt";
 
-    public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
-
-    public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
+    public string? ApprovalStatus { get; set; }
 
     public virtual Hotel IdHotelNavigation { get; set; } = null!;
 
@@ -41,12 +38,12 @@ public partial class Tour
     public virtual TypeOfTour IdTypeNavigation { get; set; } = null!;
 
     public virtual ICollection<Promotion> Promotions { get; set; } = new List<Promotion>();
-
-    public virtual ICollection<Report> Reports { get; set; } = new List<Report>();
-
-    public virtual ICollection<Service> Services { get; set; } = new List<Service>();
-
-    public virtual ICollection<TourDetail> TourDetails { get; set; } = new List<TourDetail>();
-
+    public virtual ICollection<Booking> Booking { get; set; }
+  
     public virtual ICollection<UsersFavoriteTour> UsersFavoriteTours { get; set; } = new List<UsersFavoriteTour>();
+    public virtual ICollection<TourDetail> TourDetails { get; set; } = new List<TourDetail>();
+    public virtual ICollection<Service> Services { get; set; } = new List<Service>();
+    public virtual ICollection<Report> Reports { get; set; } = new List<Report>();
+    public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
+    public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();   
 }

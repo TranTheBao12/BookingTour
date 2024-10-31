@@ -14,6 +14,10 @@
             <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0">Logout</button>
         </form>
     </li>
+        <li class="nav-item">
+            <a asp-controller="Profile" asp-action="ViewProfile" class="btn btn-primary">Xem thông tin cá nhân</a>
+
+        </li>
 }
 else
 {
@@ -22,6 +26,10 @@ else
     </li>
     <li class="nav-item">
         <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    </li>
+    <li class="nav-item">
+            <a asp-controller="Profile" asp-action="ViewProfile" class="btn btn-primary">Xem thông tin cá nhân</a>
+
     </li>
 }
 </ul>

@@ -14813,8 +14813,16 @@
       "PackagePath": "staticwebassets\\fonts\\index.html"
     },
     {
+      "Id": "C:\\DACN_2024\\BookingTour\\BookingTour\\wwwroot\\images\\303ec1fe-02f7-49fa-905e-cd24dc3d05a9.jpg",
+      "PackagePath": "staticwebassets\\images\\303ec1fe-02f7-49fa-905e-cd24dc3d05a9.jpg"
+    },
+    {
       "Id": "C:\\DACN_2024\\BookingTour\\BookingTour\\wwwroot\\images\\dalat.jpg",
       "PackagePath": "staticwebassets\\images\\dalat.jpg"
+    },
+    {
+      "Id": "C:\\DACN_2024\\BookingTour\\BookingTour\\wwwroot\\images\\danang.jpg",
+      "PackagePath": "staticwebassets\\images\\danang.jpg"
     },
     {
       "Id": "C:\\DACN_2024\\BookingTour\\BookingTour\\wwwroot\\images\\gal_1.jpg",
@@ -14839,6 +14847,10 @@
     {
       "Id": "C:\\DACN_2024\\BookingTour\\BookingTour\\wwwroot\\images\\gal_6.jpg",
       "PackagePath": "staticwebassets\\images\\gal_6.jpg"
+    },
+    {
+      "Id": "C:\\DACN_2024\\BookingTour\\BookingTour\\wwwroot\\images\\hanoi.jpg",
+      "PackagePath": "staticwebassets\\images\\hanoi.jpg"
     },
     {
       "Id": "C:\\DACN_2024\\BookingTour\\BookingTour\\wwwroot\\images\\hero-slider-1.jpg",
@@ -14899,6 +14911,14 @@
     {
       "Id": "C:\\DACN_2024\\BookingTour\\BookingTour\\wwwroot\\images\\person_4.jpg",
       "PackagePath": "staticwebassets\\images\\person_4.jpg"
+    },
+    {
+      "Id": "C:\\DACN_2024\\BookingTour\\BookingTour\\wwwroot\\images\\phanthiet.jpg",
+      "PackagePath": "staticwebassets\\images\\phanthiet.jpg"
+    },
+    {
+      "Id": "C:\\DACN_2024\\BookingTour\\BookingTour\\wwwroot\\images\\sapa.jpg",
+      "PackagePath": "staticwebassets\\images\\sapa.jpg"
     },
     {
       "Id": "C:\\DACN_2024\\BookingTour\\BookingTour\\wwwroot\\images\\slider-1.jpg",

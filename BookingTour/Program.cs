@@ -51,7 +51,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = $"/Identity/Account/Login";
     options.LogoutPath = $"/Identity/Account/Logout";
-    options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+    options.AccessDeniedPath = $"/Home/AccessDenied";
 });
 
 var app = builder.Build();
@@ -70,21 +70,22 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// ??nh ngh?a route cho area tr??c
+
 app.UseEndpoints(endpoints =>
 {
-    endpoints.MapAreaControllerRoute(
-        name: "admin",
-        areaName: "ADMIN",
-        pattern: "ADMIN/{controller=Home}/{action=Index}/{id?}"); // ??nh ngh?a route cho area ADMIN
 
-    // ??nh ngh?a route cho controller bình th??ng
+    endpoints.MapAreaControllerRoute(
+        name: "ADMIN",
+        areaName: "Admin",
+        pattern: "Admin/{controller=Home}/{action=AccessDenied}/{id?}"); // ??nh ngh?a route cho area ADMIN
+
+
     endpoints.MapControllerRoute(
         name: "default",
         pattern: "{controller=Home}/{action=Index}/{id?}");
+
 });
 
-// ???ng d?n cho Razor Pages
 app.MapRazorPages();
 
 app.Run();

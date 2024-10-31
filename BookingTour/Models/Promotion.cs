@@ -24,10 +24,9 @@ public partial class Promotion
     public long IdTour { get; set; }
 
     public long IdHotel { get; set; }
-
-    public virtual Hotel IdHotelNavigation { get; set; } = null!;
-
-    public virtual Tour IdTourNavigation { get; set; } = null!;
-
+    public virtual Hotel IdHotelNavigation { get; set; } 
+    public virtual Tour IdTourNavigation { get; set; } 
     public virtual ICollection<AspNetUser> Ids { get; set; } = new List<AspNetUser>();
+
+
 }

@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace BookingTour.Areas.Admin.Controllers
 {
-    [Area("ADMIN")]
+    [Area("Admin")]
     [Authorize(Roles = CD.Role_Admin)]
     public class ToursController : Controller
     {
@@ -25,6 +25,10 @@ namespace BookingTour.Areas.Admin.Controllers
         // GET: Tours
         public async Task<IActionResult> Index(int page = 1)
         {
+            if (!User.IsInRole("ADMIN"))
+            {
+                return RedirectToAction("AccessDenied", "Home");
+            }
             const int pageSize = 10; // Số bản ghi mỗi trang
 
             // Lấy danh sách tour có trạng thái "Chờ Duyệt"
@@ -62,7 +66,7 @@ namespace BookingTour.Areas.Admin.Controllers
             tour.ApprovalStatus = "Đã phê duyệt";
             _context.SaveChanges();
 
-            return RedirectToAction("PendingTours");
+            return RedirectToAction("Index", "Tours");
         }
 
         public IActionResult RejectTour(long id)
@@ -221,6 +225,22 @@ namespace BookingTour.Areas.Admin.Controllers
         private bool TourExists(long id)
         {
             return _context.Tours.Any(e => e.IdTour == id);
+        }
+        private bool HasAccess(string role)
+        {
+            return User.IsInRole(role);
+        }
+
+        // Một action ví dụ
+        public IActionResult SomeAction()
+        {
+            if (!HasAccess("Admin"))
+            {
+                return RedirectToAction("AccessDenied", "Home");
+            }
+
+            // Thực hiện hành động nếu có quyền
+            return View();
         }
     }
 }

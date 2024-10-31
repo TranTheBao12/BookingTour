@@ -1,0 +1,277 @@
+﻿@model BookingTour.Models.Tour
+
+@{
+    ViewData["Title"] = "Chi tiết Tour - " + Model.Name;
+    Layout = "_Layout"; // Nếu bạn muốn sử dụng layout riêng, hãy thay thế bằng layout phù hợp
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Untree.co">
+    <link rel="shortcut icon" href="favicon.png">
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap4" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="~/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="~/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="~/css/daterangepicker.css">
+    <link rel="stylesheet" href="~/css/aos.css">
+    <link rel="stylesheet" href="~/css/style.css">
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 30px;
+        }
+
+        .tour-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .tour-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .tour-info, .tour-details, .rating, .info-note {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .note-list {
+            margin-top: 10px;
+        }
+
+        .note-item {
+            margin-bottom: 5px;
+        }
+
+        .tour-title {
+            font-size: 32px; /* Tăng kích thước chữ */
+            font-weight: bold; /* In đậm chữ */
+            text-transform: uppercase; /* Chuyển tất cả chữ thành in hoa */
+            color: #007bff; /* Màu sắc có thể thay đổi theo ý bạn */
+            margin-bottom: 20px; /* Khoảng cách phía dưới */
+            text-align: center; /* Căn giữa tiêu đề */
+        }
+
+        .tour-pricing {
+            background-color: #fff5b1; /* Nền màu vàng nhạt */
+            padding: 20px; /* Thêm khoảng đệm cho khối */
+            border-radius: 8px; /* Bo góc cho khối */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Đổ bóng cho khối */
+        }
+
+            .tour-pricing h2 {
+                color: #ffcc00; /* Màu vàng cho tiêu đề */
+            }
+
+            .tour-pricing .form-control-plaintext {
+                color: #ffcc00; /* Màu vàng cho giá */
+            }
+
+    </style>
+</head>
+<div style="background-color:#ecf0f5;border-radius:80%">
+    <div class="container">
+    <h1 class="tour-title">@Model.Name</h1>
+
+        <img src="@Url.Content("~/images/" + Model.Image)" alt="Hình ảnh của tour @Model.Name" class="tour-image">
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="tour-info">
+                    <h2>Thông tin tour</h2>
+                    <ul>
+                        <li>Ngày khởi hành: @Model.StartDate,</li>
+                        <li>Ngày kết thúc: @Model.EndDate,</li>
+                        <li>Số ngày: @Model.MaxQuantity ngày</li>
+                        <li>Điểm khởi hành: Hà Nội</li>
+                        <li>Điểm đến: @Model.IdTransNavigation?.IdTrans</li>
+                    </ul>
+                </div>
+
+                <div class="tour-details">
+                    <h2>Lịch trình tour</h2>
+                    <ul>
+                        <li>Ngày 1: Hà Nội - Bangkok, Đi máy bay từ Hà Nội đến Bangkok</li>
+                        <li>Ngày 2: Bangkok, Tham quan Cung điện Vương quốc, Chùa Phật Ngọc</li>
+                        <li>Ngày 3: Bangkok - Pattaya, Đi xe bus từ Bangkok đến Pattaya</li>
+                        <li>Ngày 4: Pattaya, Tham quan Công Viên Khủng Long, biển Pattaya</li>
+                        <li>Ngày 5: Pattaya - Bangkok, Đi xe bus từ Pattaya đến Bangkok</li>
+                        <li>Ngày 6: Bangkok - Hà Nội, Đi máy bay từ Bangkok đến Hà Nội</li>
+                    </ul>
+                </div>
+
+                <div class="rating">
+                    <h2>Đánh giá của người dùng</h2>
+                    <form action="/submit-review" method="post">
+                        <div class="form-group">
+                            <label for="userReview">Đánh giá của bạn:</label>
+                            <textarea class="form-control" id="userReview" name="review" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="userRating">Xếp hạng:</label>
+                            <select class="form-control" id="userRating" name="rating">
+                                <option value="1">1 Sao</option>
+                                <option value="2">2 Sao</option>
+                                <option value="3">3 Sao</option>
+                                <option value="4">4 Sao</option>
+                                <option value="5">5 Sao</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Gửi đánh giá</button>
+                    </form>
+
+                    <h3 class="mt-4">Đánh giá hiện có</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item">"Một chuyến đi tuyệt vời!" - 5 Sao</li>
+                        <li class="list-group-item">"Rất thích thú với chuyến đi này." - 4 Sao</li>
+                        <li class="list-group-item">"Chất lượng dịch vụ tốt." - 4 Sao</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="info-note">
+                    <h2>Thông tin lưu ý</h2>
+                    <h4>Giá bao gồm:</h4>
+                    <ul class="note-list">
+                        <li class="note-item">Vé máy bay khứ hồi</li>
+                        <li class="note-item">Chỗ ở tại khách sạn</li>
+                        <li class="note-item">Ăn sáng hàng ngày</li>
+                    </ul>
+                    <h4>Phụ thu:</h4>
+                    <ul class="note-list">
+                        <li class="note-item">Phụ thu dịp lễ</li>
+                    </ul>
+                    <h4>Thông tin Visa:</h4>
+                    <ul class="note-list">
+                        <li class="note-item">Visa được cấp tại sân bay.</li>
+                    </ul>
+                    <h4>Hủy đổi:</h4>
+                    <ul class="note-list">
+                        <li class="note-item">Có thể hủy đổi trước 7 ngày.</li>
+                    </ul>
+                    <h4>Hướng dẫn viên:</h4>
+                    <ul class="note-list">
+                        <li class="note-item">Hướng dẫn viên chuyên nghiệp, nói tiếng Việt.</li>
+                    </ul>
+                </div>
+
+            <div class="tour-pricing mt-4">
+                <h2>Đặt tour</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="quantity">Số lượng người:</label>
+                        <input type="number" id="quantity" min="1" value="1" class="form-control" onchange="updateTotal()">
+                    </div>
+                    <div class="form-group">
+                        <label>Giá mỗi người:</label>
+                        <p class="form-control-plaintext">5000.00$</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Tổng giá:</label>
+                        <p id="totalPrice" class="form-control-plaintext">5000.00$</p>
+                    </div>
+                    <button type="button" class="btn btn-success" onclick="bookTour()">Đặt tour</button>
+                </form>
+            </div>
+
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.IdTour" class="btn btn-warning">Chỉnh sửa</a> |
+            <a asp-action="Index" class="btn btn-secondary">Trở lại danh sách</a>
+        </div>
+    </div>
+ </div>
+    <script src="~/js/jquery-3.4.1.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script>
+        function updateTotal() {
+            var quantity = document.getElementById("quantity").value;
+            var pricePerPerson = @Model.Price;
+            var total = quantity * pricePerPerson;
+            document.getElementById("totalPrice").innerText = total.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+        }
+
+        function bookTour() {
+            var quantity = document.getElementById("quantity").value;
+            if (quantity <= 0) {
+                alert("Vui lòng chọn số lượng người hợp lệ.");
+                return;
+            }
+            alert("Bạn đã đặt tour thành công với " + quantity + " người.");
+        }
+    </script>
+    <script src="~/js/jquery-3.4.1.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/jquery.animateNumber.min.js"></script>
+    <script src="~/js/jquery.waypoints.min.js"></script>
+    <script src="~/js/jquery.fancybox.min.js"></script>
+    <script src="~/js/aos.js"></script>
+    <script src="~/js/moment.min.js"></script>
+    <script src="~/js/daterangepicker.js"></script>
+
+    <script src="~/js/typed.js"></script>
+    <script>
+        $(function () {
+            var slides = $('.slides'),
+                images = slides.find('img');
+
+            images.each(function (i) {
+                $(this).attr('data-id', i + 1);
+            })
+
+            var typed = new Typed('.typed-words', {
+                strings: ["San Francisco.", " Paris.", " New Zealand.", " Maui.", " London."],
+                typeSpeed: 80,
+                backSpeed: 80,
+                backDelay: 4000,
+                startDelay: 1000,
+                loop: true,
+                showCursor: true,
+                preStringTyped: (arrayPos, self) => {
+                    arrayPos++;
+                    console.log(arrayPos);
+                    $('.slides img').removeClass('active');
+                    $('.slides img[data-id="' + arrayPos + '"]').addClass('active');
+                }
+
+            });
+        })
+    </script>
+
+    <script src="~/js/custom.js"></script>
+
+
+</html>

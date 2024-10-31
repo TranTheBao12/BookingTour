@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="AdminController\**" />
+    <Content Remove="AdminController\**" />
+    <EmbeddedResource Remove="AdminController\**" />
+    <None Remove="AdminController\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="C:\Users\USER\.nuget\packages\bootstrap\5.1.0\contentFiles\any\any\wwwroot\css\bootstrap-grid.css" />
     <Content Remove="C:\Users\USER\.nuget\packages\bootstrap\5.1.0\contentFiles\any\any\wwwroot\css\bootstrap-grid.css.map" />
     <Content Remove="C:\Users\USER\.nuget\packages\bootstrap\5.1.0\contentFiles\any\any\wwwroot\css\bootstrap-grid.min.css" />
@@ -103,14 +110,12 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.6" />
     <PackageReference Include="Twilio" Version="7.6.0" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="10.5.7" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="AdminController\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Data\" />
     <Folder Include="ViewModels\" />
-    <Folder Include="Views\Shared\" />
   </ItemGroup>
 
   <ItemGroup>

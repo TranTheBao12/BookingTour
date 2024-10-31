@@ -14,25 +14,13 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-
-    <!-- Bootstrap Core Css -->
-  
     <link href="~/adminlayout/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/adminlayout/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" />
-    <!-- Waves Effect Css -->
     <link href="~/Adminlayout/plugins/node-waves/waves.css" rel="stylesheet" />
     <link href="~/adminlayout/css/style.min.css" rel="stylesheet" />
     <link href="~/adminlayout/css/style.css" rel="stylesheet" />
-    <!-- Animation Css -->
     <link href="~/Adminlayout/plugins/animate-css/animate.css" rel="stylesheet" />
-
-    <!-- Morris Chart Css-->
     <link href="~/Adminlayout/plugins/morrisjs/morris.css" rel="stylesheet" />
-
-    <!-- Custom Css -->
- 
-
-    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="~/Adminlayout/css/themes/all-themes.css" rel="stylesheet" />
 </head>
 
@@ -336,23 +324,30 @@
 
                     </li>
                     <li>
-                        <a asp-controller="Tours" asp-action="Index">
+                        <a asp-area="ADMIN" asp-controller="Category" asp-action="Index">
                             <i class="material-icons">layers</i>
-                            <span>Quản lý Danh mục</span>
+                            <span>Quản lý danh mục</span>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a asp-area="ADMIN" asp-controller="Promotions" asp-action="Index">
+                            <i class="material-icons">layers</i>
+                            <span>Quản lý Khuyến mãi</span>
                         </a>
 
                     </li>
                     <li>
                         <a asp-controller="Tours" asp-action="Index">
                             <i class="material-icons">layers</i>
-                            <span>thống kê</span>
+                            <span>Thống kê</span>
                         </a>
 
                     </li>
                     <li>
                         <a asp-controller="Tours" asp-action="Index">
                             <i class="material-icons">layers</i>
-                            <span>Quản lý Blog</span>
+                            <span>Quản lý blog</span>
                         </a>
 
                     </li>
@@ -485,6 +480,7 @@
 
     <!-- Demo Js -->
     <script src="~/Adminlayout/js/demo.js"></script>
+    @RenderSection("scripts", required: false)
 </body>
 
 </html>

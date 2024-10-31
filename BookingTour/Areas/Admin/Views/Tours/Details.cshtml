@@ -1,166 +1,166 @@
-﻿@model BookingTour.Models.Tour
+﻿    @model BookingTour.Models.Tour
 
-@{
-    Layout = "_LayoutAdmin"; // Sử dụng layout admin chung
-}
+    @{
+        Layout = "_LayoutAdmin"; // Sử dụng layout admin chung
+    }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Chi Tiết Tour</title>
-    <style>
-        .tour-details-container {
-            max-width: 100%; /* Tăng chiều rộng tối đa */
-            margin: 0 auto;
-            padding: 30px; /* Tăng padding để tạo không gian bên trong */
-            background-color: #ecf0f5;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: flex; /* Sử dụng Flexbox để tạo hai cột */
-        }
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Chi Tiết Tour</title>
+        <style>
+            .tour-details-container {
+                max-width: 100%; /* Tăng chiều rộng tối đa */
+                margin: 0 auto;
+                padding: 30px; /* Tăng padding để tạo không gian bên trong */
+                background-color: #ecf0f5;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                display: flex; /* Sử dụng Flexbox để tạo hai cột */
+            }
 
-        .tour-info {
-            flex: 2; /* Cột trái chiếm 2 phần */
-            padding-right: 20px; /* Khoảng cách giữa hai cột */
-        }
+            .tour-info {
+                flex: 2; /* Cột trái chiếm 2 phần */
+                padding-right: 20px; /* Khoảng cách giữa hai cột */
+            }
 
-        .image-info {
-            flex: 2; /* Cột trái chiếm 2 phần */
-            padding-right: 20px; /* Khoảng cách giữa hai cột */
-        }
-        .tour-side-info {
-            flex: 1; /* Cột phải chiếm 1 phần */
-            background-color: #f9f9f9; /* Nền màu khác để phân biệt */
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+            .image-info {
+                flex: 2; /* Cột trái chiếm 2 phần */
+                padding-right: 20px; /* Khoảng cách giữa hai cột */
+            }
+            .tour-side-info {
+                flex: 1; /* Cột phải chiếm 1 phần */
+                background-color: #f9f9f9; /* Nền màu khác để phân biệt */
+                padding: 15px;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
 
-        .tour-image img {
-            width: 100%;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
+            .tour-image img {
+                width: 100%;
+                border-radius: 8px;
+                margin-bottom: 20px;
+            }
 
-        .info-item {
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 15px;
-            margin-bottom: 10px;
-            background-color: #fff;
-        }
+            .info-item {
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 15px;
+                margin-bottom: 10px;
+                background-color: #fff;
+            }
 
-            .info-item dt {
+                .info-item dt {
+                    font-weight: bold;
+                    color: #333;
+                }
+
+                .info-item dd {
+                    margin-bottom: 0;
+                }
+
+            .action-buttons {
+                text-align: center;
+                margin-top: 20px;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                margin: 5px;
+                border-radius: 4px;
+                text-decoration: none;
+            }
+
+            .btn-primary {
+                background-color: #007bff;
+                color: #fff;
+            }
+
+                .btn-primary:hover {
+                    background-color: #0056b3;
+                }
+
+            .btn-secondary {
+                background-color: #6c757d;
+                color: #fff;
+            }
+
+                .btn-secondary:hover {
+                    background-color: #5a6268;
+                }
+
+            .tourDetailheadLine {
+                padding: 10px 0;
+                margin-top: 15px;
+                margin-bottom: 10px;
+                font-size: 24px;
                 font-weight: bold;
-                color: #333;
+                color: #3f3b3b;
+                line-height: 1.5;
             }
-
-            .info-item dd {
-                margin-bottom: 0;
-            }
-
-        .action-buttons {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .btn {
-            padding: 10px 20px;
-            margin: 5px;
-            border-radius: 4px;
-            text-decoration: none;
-        }
-
-        .btn-primary {
-            background-color: #007bff;
-            color: #fff;
-        }
-
-            .btn-primary:hover {
-                background-color: #0056b3;
-            }
-
-        .btn-secondary {
-            background-color: #6c757d;
-            color: #fff;
-        }
-
-            .btn-secondary:hover {
-                background-color: #5a6268;
-            }
-
-        .tourDetailheadLine {
-            padding: 10px 0;
-            margin-top: 15px;
-            margin-bottom: 10px;
-            font-size: 24px;
-            font-weight: bold;
-            color: #3f3b3b;
-            line-height: 1.5;
-        }
-    </style>
-</head>
-<body>
+        </style>
+    </head>
+    <body>
  
-    <div class="tour-details-container">
+        <div class="tour-details-container">
 
-        <div class="tour-info">
-            <h1><dd>@Html.DisplayFor(model => model.Name)</dd></h1>
-           <hr />
+            <div class="tour-info">
+                <h1><dd>@Html.DisplayFor(model => model.Name)</dd></h1>
+               <hr />
 
-            <div class="tour-image">
-                <img src="@Url.Content("~/images/" + Model.Image)" alt="Ảnh tour" />
+                <div class="tour-image">
+                    <img src="@Url.Content("~/images/" + Model.Image)" alt="Ảnh tour" />
+                </div>
+
+                <div class="info-item">
+                    <dt class="tourDetailheadLine">Mô tả</dt>
+                    <dd>@Html.DisplayFor(model => model.Description)</dd>
+                </div>
+                <div class="info-item">
+                    <dt class="tourDetailheadLine">Chương trình Tour</dt>
+                    <dd>@Html.DisplayFor(model => model.StartDate, "{0:dd/MM/yyyy}")</dd> Đến <dd>@Html.DisplayFor(model => model.EndDate, "{0:dd/MM/yyyy}")</dd>
+                </div>
+                <div class="info-item">
+                    <dt class="tourDetailheadLine">Số lượng tối đa</dt>
+                    <dd>@Html.DisplayFor(model => model.MaxQuantity) người</dd>
+                </div>
+                <div class="info-item">
+                    <dt class="tourDetailheadLine">Khách sạn</dt>
+                    <dd>@Html.DisplayFor(model => model.IdHotelNavigation.Name)</dd>
+                </div>
+                <div class="info-item">
+                    <dt class="tourDetailheadLine">Phương tiện</dt>
+                    <dd>@Html.DisplayFor(model => model.IdTransNavigation.Name)</dd>
+                </div>
+                <div class="info-item">
+                    <dt class="tourDetailheadLine">Loại tour</dt>
+                    <dd>@Html.DisplayFor(model => model.IdTypeNavigation.Name)</dd>
+                </div>
             </div>
 
-            <div class="info-item">
-                <dt class="tourDetailheadLine">Mô tả</dt>
-                <dd>@Html.DisplayFor(model => model.Description)</dd>
-            </div>
-            <div class="info-item">
-                <dt class="tourDetailheadLine">Chương trình Tour</dt>
-                <dd>@Html.DisplayFor(model => model.StartDate, "{0:dd/MM/yyyy}")</dd> Đến <dd>@Html.DisplayFor(model => model.EndDate, "{0:dd/MM/yyyy}")</dd>
-            </div>
-            <div class="info-item">
-                <dt class="tourDetailheadLine">Số lượng tối đa</dt>
-                <dd>@Html.DisplayFor(model => model.MaxQuantity) người</dd>
-            </div>
-            <div class="info-item">
-                <dt class="tourDetailheadLine">Khách sạn</dt>
-                <dd>@Html.DisplayFor(model => model.IdHotelNavigation.Name)</dd>
-            </div>
-            <div class="info-item">
-                <dt class="tourDetailheadLine">Phương tiện</dt>
-                <dd>@Html.DisplayFor(model => model.IdTransNavigation.Name)</dd>
-            </div>
-            <div class="info-item">
-                <dt class="tourDetailheadLine">Loại tour</dt>
-                <dd>@Html.DisplayFor(model => model.IdTypeNavigation.Name)</dd>
+            <div class="tour-side-info">
+                <h3>Thông tin bổ sung</h3>
+                <div class="info-item">
+                    <dt class="tourDetailheadLine">Khách sạn</dt>
+                    <dd>@Html.DisplayFor(model => model.IdHotelNavigation.Name)</dd>
+                </div>
+                <div class="info-item">
+                    <dt class="tourDetailheadLine">Phương tiện</dt>
+                    <dd>@Html.DisplayFor(model => model.IdTransNavigation.Name)</dd>
+                </div>
+                <div class="info-item">
+                    <dt class="tourDetailheadLine">Loại tour</dt>
+                    <dd>@Html.DisplayFor(model => model.IdTypeNavigation.Name)</dd>
+                </div>
             </div>
         </div>
 
-        <div class="tour-side-info">
-            <h3>Thông tin bổ sung</h3>
-            <div class="info-item">
-                <dt class="tourDetailheadLine">Khách sạn</dt>
-                <dd>@Html.DisplayFor(model => model.IdHotelNavigation.Name)</dd>
-            </div>
-            <div class="info-item">
-                <dt class="tourDetailheadLine">Phương tiện</dt>
-                <dd>@Html.DisplayFor(model => model.IdTransNavigation.Name)</dd>
-            </div>
-            <div class="info-item">
-                <dt class="tourDetailheadLine">Loại tour</dt>
-                <dd>@Html.DisplayFor(model => model.IdTypeNavigation.Name)</dd>
-            </div>
+        <div class="action-buttons">
+            <a class="btn btn-success btn-sm" asp-action="ApproveTour" asp-route-id="@Model.IdTour">Phê duyệt</a> |
+            <a class="btn btn-danger btn-sm" asp-action="RejectTour" asp-route-id="@Model.IdTour">Từ chối</a> |
+            <a class="btn btn-secondary" asp-action="Index">Quay lại danh sách</a>
         </div>
-    </div>
 
-    <div class="action-buttons">
-        <a class="btn btn-success btn-sm" asp-action="ApproveTour" asp-route-id="@Model.IdTour">Phê duyệt</a> |
-        <a class="btn btn-danger btn-sm" asp-action="RejectTour" asp-route-id="@Model.IdTour">Từ chối</a> |
-        <a class="btn btn-secondary" asp-action="Index">Quay lại danh sách</a>
-    </div>
-
-</body>
-</html>
+    </body>
+    </html>

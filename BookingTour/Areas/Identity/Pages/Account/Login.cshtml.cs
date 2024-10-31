@@ -113,29 +113,35 @@ namespace BookingTour.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+                // Lấy thông tin người dùng từ email
+                var user = await _userManager.FindByEmailAsync(Input.Email);
+
+                // Kiểm tra xem người dùng có tồn tại và tài khoản có bị khóa không
+                if (user != null && user.LockoutEnabled)
+                {
+                    ModelState.AddModelError(string.Empty, "Tài khoản của bạn đã bị khóa. Vui lòng liên hệ với quản trị viên.");
+                    return Page();
+                }
+
+                // Nếu tài khoản không bị khóa, tiếp tục quá trình đăng nhập
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    var user = await _signInManager.UserManager.FindByEmailAsync(Input.Email);
-                    if (await _signInManager.UserManager.IsInRoleAsync(user, "Admin"))
+
+                    // Điều hướng dựa trên vai trò của người dùng
+                    if (await _userManager.IsInRoleAsync(user, "Admin"))
                     {
-                        // Điều hướng đến trang admin nếu người dùng là admin
                         return RedirectToAction("Index", "BookingStatus", new { area = "ADMIN" });
                     }
-                    else if(await _signInManager.UserManager.IsInRoleAsync(user, "User"))
+                    else if (await _userManager.IsInRoleAsync(user, "User"))
                     {
-                        // Điều hướng đến trang home cho người dùng bình thường
-                        return RedirectToAction("Index", "Home", new { area = "USER" });
+                        return RedirectToAction("Index", "Home" );
                     }
-                    else 
+                    else
                     {
-                        // Điều hướng đến trang home cho người dùng bình thường
-                        return RedirectToAction("Index", "Home", new { area = "HOST" });
+                        return RedirectToAction("Index", "Home" );
                     }
-
                 }
                 if (result.RequiresTwoFactor)
                 {

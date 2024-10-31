@@ -1,0 +1,117 @@
+﻿@model IEnumerable<BookingTour.Models.Tour>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Untree.co">
+    <link rel="shortcut icon" href="favicon.png">
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap4" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="~/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="~/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="~/css/daterangepicker.css">
+    <link rel="stylesheet" href="~/css/aos.css">
+    <link rel="stylesheet" href="~/css/style.css">
+
+    <title>Tour Free Bootstrap Template for Travel Agency by Untree.co</title>
+</head>
+
+<div class="untree_co-section">
+    <div class="container">
+        <div class="row justify-content-center text-center mb-5">
+            <div class="col-lg-6">
+                <h2 class="section-title text-center mb-3">Khuyến mại &amp; Giảm giá đặc biệt</h2>
+                <p>Xã xa, đằng sau những ngọn núi chữ, xa khỏi các quốc gia Vokalia và Consonantia, có những văn bản mù sống. Tách biệt chúng sống trong Bookmarksgrove ngay tại bờ biển của Semantics, một đại dương ngôn ngữ rộng lớn.</p>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var tour in ViewBag.PopularTours) // Sử dụng ViewBag để hiển thị danh sách tour
+            {
+                <div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                    <div class="media-1">
+                        <a href="@Url.Action("Details", "Tours", new { id = tour.IdTour })" class="d-block mb-3">
+                            <img src="@Url.Content("~/images/" + tour.Image)" alt="Hình ảnh" class="img-fluid" style="width: 300px; height: 200px; object-fit: cover;">
+
+                        </a>
+                        <span class="d-flex align-items-center loc mb-2">
+                            <span class="icon-room mr-3"></span>
+                            <span>@tour.IdHotelNavigation?.Name</span> <!-- Hiển thị tên khách sạn -->
+                        </span>
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h3>
+                                    <a href="@Url.Action("Details", "Tours", new { id = tour.IdTour })">@tour.Name</a>
+                                </h3>
+                                <div class="price ml-auto">
+                                    <span>@tour.Price.ToString("C")</span> <!-- Hiển thị giá với định dạng tiền tệ -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+<script src="~/js/jquery-3.4.1.min.js"></script>
+<script src="~/js/popper.min.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+<script src="~/js/owl.carousel.min.js"></script>
+<script src="~/js/jquery.animateNumber.min.js"></script>
+<script src="~/js/jquery.waypoints.min.js"></script>
+<script src="~/js/jquery.fancybox.min.js"></script>
+<script src="~/js/aos.js"></script>
+<script src="~/js/moment.min.js"></script>
+<script src="~/js/daterangepicker.js"></script>
+
+<script src="~/js/typed.js"></script>
+<script>
+    $(function () {
+        var slides = $('.slides'),
+            images = slides.find('img');
+
+        images.each(function (i) {
+            $(this).attr('data-id', i + 1);
+        })
+
+        var typed = new Typed('.typed-words', {
+            strings: ["San Francisco.", " Paris.", " New Zealand.", " Maui.", " London."],
+            typeSpeed: 80,
+            backSpeed: 80,
+            backDelay: 4000,
+            startDelay: 1000,
+            loop: true,
+            showCursor: true,
+            preStringTyped: (arrayPos, self) => {
+                arrayPos++;
+                console.log(arrayPos);
+                $('.slides img').removeClass('active');
+                $('.slides img[data-id="' + arrayPos + '"]').addClass('active');
+            }
+
+        });
+    })
+</script>
+
+<script src="~/js/custom.js"></script>
+
+
+</html>

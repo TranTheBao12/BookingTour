@@ -10,6 +10,8 @@ C:\DACN_2024\BookingTour\BookingTour\bin\Debug\net8.0\BookingTour.pdb
 C:\DACN_2024\BookingTour\BookingTour\bin\Debug\net8.0\Azure.Core.dll
 C:\DACN_2024\BookingTour\BookingTour\bin\Debug\net8.0\Azure.Identity.dll
 C:\DACN_2024\BookingTour\BookingTour\bin\Debug\net8.0\Humanizer.dll
+C:\DACN_2024\BookingTour\BookingTour\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Facebook.dll
+C:\DACN_2024\BookingTour\BookingTour\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Google.dll
 C:\DACN_2024\BookingTour\BookingTour\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\DACN_2024\BookingTour\BookingTour\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\DACN_2024\BookingTour\BookingTour\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
@@ -96,6 +98,7 @@ C:\DACN_2024\BookingTour\BookingTour\bin\Debug\net8.0\System.Runtime.Caching.dll
 C:\DACN_2024\BookingTour\BookingTour\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
 C:\DACN_2024\BookingTour\BookingTour\bin\Debug\net8.0\System.Security.Permissions.dll
 C:\DACN_2024\BookingTour\BookingTour\bin\Debug\net8.0\System.Windows.Extensions.dll
+C:\DACN_2024\BookingTour\BookingTour\bin\Debug\net8.0\Twilio.dll
 C:\DACN_2024\BookingTour\BookingTour\bin\Debug\net8.0\af\Humanizer.resources.dll
 C:\DACN_2024\BookingTour\BookingTour\bin\Debug\net8.0\ar\Humanizer.resources.dll
 C:\DACN_2024\BookingTour\BookingTour\bin\Debug\net8.0\az\Humanizer.resources.dll
@@ -292,6 +295,5 @@ C:\DACN_2024\BookingTour\BookingTour\obj\Debug\net8.0\refint\BookingTour.dll
 C:\DACN_2024\BookingTour\BookingTour\obj\Debug\net8.0\BookingTour.pdb
 C:\DACN_2024\BookingTour\BookingTour\obj\Debug\net8.0\BookingTour.genruntimeconfig.cache
 C:\DACN_2024\BookingTour\BookingTour\obj\Debug\net8.0\ref\BookingTour.dll
-C:\DACN_2024\BookingTour\BookingTour\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Facebook.dll
-C:\DACN_2024\BookingTour\BookingTour\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Google.dll
-C:\DACN_2024\BookingTour\BookingTour\bin\Debug\net8.0\Twilio.dll
+C:\DACN_2024\BookingTour\BookingTour\bin\Debug\net8.0\X.PagedList.dll
+C:\DACN_2024\BookingTour\BookingTour\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll

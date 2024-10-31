@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BookingTour.Data;
 using BookingTour.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookingTour.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = CD.Role_Admin)]
     public class AspNetUsersController : Controller
     {
         private readonly YourExistingDbContextName _context;
@@ -21,8 +23,29 @@ namespace BookingTour.Areas.Admin.Controllers
         }
 
         // GET: Admin/AspNetUsers
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1)
         {
+            const int pageSize = 10; // Số bản ghi mỗi trang
+
+            // Lấy danh sách người dùng
+            var query = _context.AspNetUsers.OrderBy(u => u.UserName);
+
+            // Tính tổng số bản ghi
+            var totalUsers = await query.CountAsync();
+
+            // Tính tổng số trang
+            var totalPages = (int)Math.Ceiling(totalUsers / (double)pageSize);
+
+            // Lấy các bản ghi cho trang hiện tại
+            var users = await query
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            // Gửi thông tin đến view
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = totalPages;
+            ViewBag.PageSize = pageSize;
             return View(await _context.AspNetUsers.ToListAsync());
         }
 
@@ -59,6 +82,7 @@ namespace BookingTour.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 _context.Add(aspNetUser);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -87,18 +111,38 @@ namespace BookingTour.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] AspNetUser aspNetUser)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount,fullname,Address,Age")] AspNetUser aspNetUser)
         {
             if (id != aspNetUser.Id)
             {
                 return NotFound();
             }
-
+            Console.WriteLine($"Fullname: {aspNetUser.fullname}");
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(aspNetUser);
+                    // Tìm người dùng trong cơ sở dữ liệu
+                    var userToUpdate = await _context.AspNetUsers.FindAsync(id);
+                    if (userToUpdate == null)
+                    {
+                        return NotFound();
+                    }
+
+                    // Cập nhật các thuộc tính cần thiết
+                    userToUpdate.UserName = aspNetUser.UserName;
+                    userToUpdate.NormalizedUserName = aspNetUser.NormalizedUserName;
+                    userToUpdate.Email = aspNetUser.Email;
+                    userToUpdate.NormalizedEmail = aspNetUser.NormalizedEmail;
+                    userToUpdate.EmailConfirmed = aspNetUser.EmailConfirmed;
+                    userToUpdate.PhoneNumber = aspNetUser.PhoneNumber;
+                    userToUpdate.PhoneNumberConfirmed = aspNetUser.PhoneNumberConfirmed;
+                    userToUpdate.fullname = aspNetUser.fullname; // Cập nhật fullname
+                    userToUpdate.Address = aspNetUser.Address; // Cập nhật Address
+                    userToUpdate.Age = aspNetUser.Age; // Cập nhật Age
+
+                    // Cập nhật người dùng
+                    _context.Update(userToUpdate);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -154,5 +198,39 @@ namespace BookingTour.Areas.Admin.Controllers
         {
             return _context.AspNetUsers.Any(e => e.Id == id);
         }
+        public async Task<IActionResult> LockAccount(string id)
+        {
+            var user = await _context.AspNetUsers.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            user.LockoutEnd = DateTimeOffset.MaxValue; // Khóa tài khoản
+            user.LockoutEnabled = true;
+
+            _context.Update(user);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> UnlockAccount(string id)
+        {
+            var user = await _context.AspNetUsers.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            user.LockoutEnd = null; // Mở khóa tài khoản
+            user.LockoutEnabled = false;
+
+            _context.Update(user);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }
