@@ -33,10 +33,8 @@ namespace BookingTour.Areas.Admin.Controllers
             const int pageSize = 10; // Số bản ghi mỗi trang
 
             // Lấy danh sách tour có trạng thái "Chờ Duyệt"
-            var query = _context.Tours
-                .Include(t => t.IdHotelNavigation)
-                .Include(t => t.IdTransNavigation)
-                .Include(t => t.IdTypeNavigation);
+            var query = _context.TypeOfTours;
+             
 
             // Tính tổng số bản ghi
             var totalTours = await query.CountAsync();
@@ -46,7 +44,7 @@ namespace BookingTour.Areas.Admin.Controllers
 
             // Lấy các bản ghi cho trang hiện tại
             var tours = await query
-                .OrderBy(t => t.IdTour) // Thay đổi theo thuộc tính bạn muốn sắp xếp
+                .OrderBy(t => t.IdType) // Thay đổi theo thuộc tính bạn muốn sắp xếp
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
@@ -189,10 +187,10 @@ namespace BookingTour.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long id)
         {
-            var tour = await _context.Tours.FindAsync(id);
+            var tour = await _context.TypeOfTours.FindAsync(id);
             if (tour != null)
             {
-                _context.Tours.Remove(tour);
+                _context.TypeOfTours.Remove(tour);
                 await _context.SaveChangesAsync();
             }
             return RedirectToAction(nameof(Index));

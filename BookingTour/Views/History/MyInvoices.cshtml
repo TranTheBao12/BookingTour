@@ -1,0 +1,107 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+    ViewData["Title"] = "MyInvoice";
+    Layout = "_LayoutUser";
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Untree.co">
+    <link rel="shortcut icon" href="favicon.png">
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap4" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="~/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="~/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="~/css/daterangepicker.css">
+    <link rel="stylesheet" href="~/css/aos.css">
+    <link rel="stylesheet" href="~/css/style.css">
+
+    <h2 class="text-center mt-4">Danh Sách Hóa Đơn Của Tôi</h2>
+</head>
+<style>
+    .table-container {
+        padding: 20px; /* Khoảng cách bên trong */
+        margin: 20px 0; /* Khoảng cách bên ngoài */
+        background-color: #f8f9fa; /* Màu nền cho phần bảng */
+        border-radius: 5px; /* Bo tròn góc */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng cho phần bảng */
+    }
+
+    .table {
+        font-size: 1.2rem; /* Tăng kích thước font của bảng */
+    }
+
+        .table th, .table td {
+            padding: 15px; /* Tăng khoảng cách trong mỗi ô */
+        }
+
+</style>
+<body>
+    <div class="container" style="margin-bottom:20%">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID Hóa Đơn</th>
+                    <th>Mô Tả</th>
+                    <th>Tổng Số Tiền</th>
+                    <th>Ngày Lập</th>
+                    <th>Tổng tiền thanh toán</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var invoice in Model)
+                {
+                    <tr>
+                        <td>@invoice.IdInvoice</td>
+                        <td>@invoice.Description</td>
+                        <td>@invoice.TotalAmount?.ToString("C")</td>
+                        <td>@invoice.BillingDate?.ToShortDateString()</td>
+                        <td>
+                            <ul class="list-unstyled">
+                                @foreach (var payment in invoice.Payments)
+                                {
+                                    <li>
+                                        @payment.PaidAmount?.ToString("C")
+                                    </li>
+                                }
+                            </ul>
+                        </td>
+                        <td><a asp-controller="Tours" asp-action="Detaillnvoice" class="btn btn-info">Xem chi tiết</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+    <script src="~/js/jquery-3.4.1.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/jquery.animateNumber.min.js"></script>
+    <script src="~/js/jquery.waypoints.min.js"></script>
+    <script src="~/js/jquery.fancybox.min.js"></script>
+    <script src="~/js/aos.js"></script>
+    <script src="~/js/moment.min.js"></script>
+    <script src="~/js/daterangepicker.js"></script>
+    <script src="~/js/typed.js"></script>
+    <script src="~/js/custom.js"></script>
+
+</body>
+</html>

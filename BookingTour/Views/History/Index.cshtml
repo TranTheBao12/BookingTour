@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Booking>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+   
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch sử đặt tour</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="~/css/user/historybooking.css" rel="stylesheet" />
+    <link href="~/css/user/stylehistory.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container py-5">
+        <div class="card shadow">
+            <div class="card-body">
+                <h1 class="text-center mb-4">LỊCH SỬ ĐẶT TOUR CỦA BẠN</h1>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">STT</th>
+                            <th scope="col">Tên Tour</th>
+                            <th scope="col">Ngày Đặt</th>
+                            <th scope="col">Ngày Khởi Hành</th>
+                            <th scope="col">Trạng Thái</th>
+                            <th scope="col">Khách Sạn</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            var index = 1; // Bắt đầu từ 1
+                        }
+                        @foreach (var tour in Model)
+                        {
+                            <tr>
+                                <th scope="row">@index</th> <!-- Dùng biến đếm -->
+                                <td>@tour.IdTourNavigation.Name</td>
+                                <td>@tour.BookingTime?.ToString("yyyy-MM-dd")</td>
+                                <td>@tour.CheckInDate?.ToString("yyyy-MM-dd")</td>
+                                <td>@tour.IdStatusNavigation.StatusName</td>
+                                <td>@tour.IdHotelNavigation.Name</td>
+                                <td><a class="btn btn-primary" href="">Xem hóa đơn</a></td>
+
+                            </tr>
+                            index++; // Tăng biến đếm lên sau mỗi dòng
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

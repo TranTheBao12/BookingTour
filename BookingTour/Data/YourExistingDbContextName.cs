@@ -351,7 +351,8 @@ public partial class YourExistingDbContextName : DbContext
 
             entity.Property(e => e.IdInvoice)
                 .ValueGeneratedNever()
-                .HasColumnName("ID_INVOICE");
+                .HasColumnName("ID_INVOICE")
+                .ValueGeneratedOnAdd();
             entity.Property(e => e.BillingDate)
                 .HasColumnType("datetime")
                 .HasColumnName("BILLING_DATE");
@@ -827,4 +828,6 @@ public partial class YourExistingDbContextName : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+public DbSet<BookingTour.Models.Blog> Blog { get; set; } = default!;
 }

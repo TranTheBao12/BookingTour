@@ -114,11 +114,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="wwwroot\js\user\" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\History\Create.cshtml" />
+    <None Include="Views\History\Delete.cshtml" />
+    <None Include="Views\History\Details.cshtml" />
+    <None Include="Views\History\Edit.cshtml" />
+    <None Include="Views\History\Index.cshtml" />
     <None Include="wwwroot\img\log.svg" />
     <None Include="wwwroot\img\register.svg" />
     <None Include="wwwroot\js\aos.js" />

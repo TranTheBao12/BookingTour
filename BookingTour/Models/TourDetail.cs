@@ -11,7 +11,7 @@ public partial class TourDetail
 
     public string? Itinerary { get; set; }
 
-    public virtual Destination IdDesNavigation { get; set; } = null!;
+    public virtual Destination IdDesNavigation { get; set; }    
 
     public virtual Tour IdTourNavigation { get; set; } = null!;
 }

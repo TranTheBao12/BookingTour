@@ -184,19 +184,19 @@ namespace BookingTour.Controllers
 
             return View(model);
         }
-
         [HttpPost]
         public async Task<IActionResult> EditProfile(UserProfileViewModel model, IFormFile AvatarFile)
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                // Trả về thông báo lỗi nếu ModelState không hợp lệ
+                return Json(new { success = false, message = "Dữ liệu không hợp lệ." });
             }
 
             var user = await _userManager.FindByIdAsync(model.Id);
             if (user == null)
             {
-                return NotFound();
+                return Json(new { success = false, message = "Người dùng không tồn tại." });
             }
 
             // Cập nhật thông tin người dùng
@@ -222,17 +222,19 @@ namespace BookingTour.Controllers
             var result = await _userManager.UpdateAsync(user);
             if (result.Succeeded)
             {
-                return RedirectToAction("ViewProfile"); // Thay thế bằng action bạn muốn chuyển đến
+                return Json(new { success = true, message = "Cập nhật thành công!" }); // Trả về thông báo thành công
             }
             else
             {
+                // Thêm thông báo lỗi vào ModelState
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
-                return View(model);
+                return Json(new { success = false, message = "Có lỗi xảy ra khi cập nhật thông tin." });
             }
-
         }
-}
+
     }
+}
+    

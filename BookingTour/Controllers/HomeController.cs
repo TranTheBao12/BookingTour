@@ -1,21 +1,30 @@
+using BookingTour.Data;
 using BookingTour.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
-
 namespace BookingTour.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+		private readonly YourExistingDbContextName _context;
+		public HomeController(ILogger<HomeController> logger, YourExistingDbContextName context)
         {
             _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var viewModel = new SearchTourViewModel
+            {
+                Destinations = await _context.Destinations.ToListAsync(),
+                TourTypes = await _context.TypeOfTours.ToListAsync()
+            };
+
+            return View(viewModel);
+
         }
         public IActionResult Index1()
         {

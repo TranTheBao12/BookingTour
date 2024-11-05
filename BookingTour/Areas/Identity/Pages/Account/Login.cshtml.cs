@@ -136,11 +136,11 @@ namespace BookingTour.Areas.Identity.Pages.Account
                     }
                     else if (await _userManager.IsInRoleAsync(user, "User"))
                     {
-                        return RedirectToAction("Index", "Home" );
+                        return RedirectToAction("Index", "Tours" );
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home" );
+                        return RedirectToAction("Index", "ToursManager", new {area = "HOST"});
                     }
                 }
                 if (result.RequiresTwoFactor)

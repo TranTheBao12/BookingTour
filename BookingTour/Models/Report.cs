@@ -16,7 +16,8 @@ public partial class Report
     public long IdTour { get; set; }
 
     public virtual AspNetUser IdNavigation { get; set; } = null!;
-    public virtual ICollection<Report> Reports { get; set; } = new List<Report>();
+
 
     public virtual Tour IdTourNavigation { get; set; } = null!;
+  
 }

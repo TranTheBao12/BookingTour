@@ -114,25 +114,30 @@ namespace BookingTour.Areas.Admin.Controllers
         public async Task<IActionResult> Edit(long? id)
         {
             if (id == null)
-            {   
+            {
                 return NotFound();
             }
 
-            var promotion = await _context.Promotions.FindAsync(id);
+            var promotion = await _context.Promotions
+                .Include(p => p.IdHotelNavigation)
+                .Include(p => p.IdTourNavigation)
+                .FirstOrDefaultAsync(p => p.IdPmt == id);
+
             if (promotion == null)
             {
                 return NotFound();
             }
 
-            // Lấy danh sách các khách sạn và tour để hiển thị trong dropdown
-            ViewData["IdHotel"] = new SelectList(_context.Hotels, "IdHotel", "HotelName", promotion.IdHotel); // Sửa tên hiển thị
-            ViewData["IdTour"] = new SelectList(_context.Tours, "IdTour", "TourName", promotion.IdTour); // Sửa tên hiển thị
+            // Gửi danh sách Hotels và Tours cho view để hiển thị trong dropdown
+            ViewData["IdHotel"] = new SelectList(_context.Hotels, "IdHotel", "HotelName", promotion.IdHotel);
+            ViewData["IdTour"] = new SelectList(_context.Tours, "IdTour", "TourName", promotion.IdTour);
             return View(promotion);
         }
 
+        // POST: Promotion/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("IdPmt,Name,Description,StartDate,EndDate,DiscountAmount,EligibilityCriteria,Status,IdHotel")] Promotion promotion)
+        public async Task<IActionResult> Edit(long id, [Bind("IdPmt,Name,Description,StartDate,EndDate,DiscountAmount,EligibilityCriteria,Status,IdHotel,IdTour")] Promotion promotion)
         {
             if (id != promotion.IdPmt)
             {
@@ -150,7 +155,7 @@ namespace BookingTour.Areas.Admin.Controllers
                         return NotFound();
                     }
 
-                    // Cập nhật các thuộc tính cần thiết
+                    // Cập nhật các thuộc tính
                     promotionToUpdate.Name = promotion.Name;
                     promotionToUpdate.Description = promotion.Description;
                     promotionToUpdate.StartDate = promotion.StartDate;
@@ -158,9 +163,9 @@ namespace BookingTour.Areas.Admin.Controllers
                     promotionToUpdate.DiscountAmount = promotion.DiscountAmount;
                     promotionToUpdate.EligibilityCriteria = promotion.EligibilityCriteria;
                     promotionToUpdate.Status = promotion.Status;
-                    promotionToUpdate.IdHotel = promotionToUpdate.IdHotel; // Cập nhật IdHotel nếu cần
+                    promotionToUpdate.IdHotel = promotionToUpdate.IdHotel;
                     promotionToUpdate.IdTour = promotionToUpdate.IdTour;
-                    // Cập nhật promotion
+                    promotionToUpdate.IdPmt = promotionToUpdate.IdPmt;
                     _context.Update(promotionToUpdate);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
@@ -177,10 +182,13 @@ namespace BookingTour.Areas.Admin.Controllers
                     }
                 }
             }
-            ViewData["IdHotel"] = new SelectList(_context.Hotels, "IdHotel", "IdHotel", promotion.IdHotel);
-            ViewData["IdTour"] = new SelectList(_context.Tours, "IdTour", "IdTour", promotion.IdTour);
+
+            // Nếu có lỗi, nạp lại danh sách Hotels và Tours để hiển thị lại
+            ViewData["IdHotel"] = new SelectList(_context.Hotels, "IdHotel", "HotelName", promotion.IdHotel);
+            ViewData["IdTour"] = new SelectList(_context.Tours, "IdTour", "TourName", promotion.IdTour);
             return View(promotion);
         }
+
 
         // GET: Admin/Promotions/Delete/5
         public async Task<IActionResult> Delete(long? id)

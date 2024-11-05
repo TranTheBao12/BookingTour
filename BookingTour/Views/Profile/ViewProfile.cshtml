@@ -1,7 +1,7 @@
 ﻿@model BookingTour.Models.UserProfileViewModel
 @{
     ViewData["Title"] = "Index";
-    Layout = "_Layout" ;
+    Layout = "_LayoutUser" ;
 }
 <!doctype html>
 <html lang="en">
@@ -31,10 +31,10 @@
     <title>Tour Free Bootstrap Template for Travel Agency by Untree.co</title>
 </head>
 <div class="row justify-content-center">
-    <div class="col-lg-4">
+    <div class="col-lg-4" style="background-color:azure">
         <div class="custom-block aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
             <h2 class="section-title">Thông tin cá nhân</h2>
-            <form asp-action="EditProfile" asp-controller="Profile" method="post" enctype="multipart/form-data" class="contact-form bg-white">
+            <form id="editProfileForm" method="post" enctype="multipart/form-data" class="contact-form bg-white">
                 <input type="hidden" name="Id" value="@Model.Id" />
                 <div class="form-group">
                     <label class="text-black" for="username">Tên đăng nhập</label>
@@ -63,6 +63,9 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
             </form>
+
+          
+
 
 
 
@@ -145,6 +148,35 @@
 <script src="~/js/daterangepicker.js"></script>
 
 <script src="~/js/typed.js"></script>
+<!-- Đoạn script để xử lý AJAX -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#editProfileForm').on('submit', function (e) {
+            e.preventDefault(); // Ngăn chặn gửi form mặc định
+
+            var formData = new FormData(this); // Tạo FormData từ form
+
+            $.ajax({
+                url: '@Url.Action("EditProfile", "Profile")', // URL của action
+                type: 'POST',
+                data: formData,
+                processData: false, // Không xử lý dữ liệu
+                contentType: false, // Không thiết lập Content-Type
+                success: function (response) {
+                    if (response.success) {
+                        alert(response.message); // Hiển thị thông báo thành công
+                    } else {
+                        alert(response.message); // Hiển thị thông báo lỗi
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert("Có lỗi xảy ra. Vui lòng thử lại.");
+                }
+            });
+        });
+    });
+</script>
 <script>
     $(function () {
         var slides = $('.slides'),

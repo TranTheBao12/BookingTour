@@ -13,19 +13,28 @@ public partial class Booking
 
     public DateTime? BookingTime { get; set; }
 
+    // Khóa ngoại tới bảng người dùng
     public string Id { get; set; } = null!;
 
+    // Khóa ngoại tới bảng Hotel
     public long IdHotel { get; set; }
 
-    public long IdTour { get; set; }
+    // Khóa ngoại tới bảng Tour
+    public long IdTour { get; set; } 
 
+    // Khóa ngoại tới bảng BookingStatus
     public long IdStatus { get; set; }
 
-    public virtual Hotel IdHotelNavigation { get; set; } = null!;
+    // Điều hướng tới bảng Hotel
+    public virtual Hotel IdHotelNavigation { get; set; } 
 
-    public virtual AspNetUser IdNavigation { get; set; } = null!;
+    // Điều hướng tới bảng AspNetUser (người dùng)
+    public virtual AspNetUser IdNavigation { get; set; } 
 
-    public virtual BookingStatus IdStatusNavigation { get; set; } = null!;
+    // Điều hướng tới bảng BookingStatus
+    public virtual BookingStatus IdStatusNavigation { get; set; } 
 
-    public virtual Tour IdTourNavigation { get; set; } = null!;
-}
+    // Điều hướng tới bảng Tour
+    public virtual Tour IdTourNavigation { get; set; }
+    public virtual ICollection<Tour> Tours { get; set; } = new List<Tour>();
+}   

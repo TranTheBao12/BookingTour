@@ -42,16 +42,24 @@
                     <button id="login-submit" type="submit" class="btn btn-primary btn-lg btn-block">Log in</button>
                     <p class="social-text">Or Sign in with social platforms</p>
                     <div class="social-media">
-                            <a class="fab fa-facebook-f" asp-controller="Account" asp-route-returnUrl="@Model.ReturnUrl" asp-action="LoginWithFacebook">Login with Facebook</a>
-                            <p></p>
-                        <a asp-controller="Account" asp-action="LoginWithGoogle" asp-route-returnUrl="@Model.ReturnUrl" class="fas fa-envelope">Log in with Google</a>
-                        <button onclick="location.href='@Url.Action("SendOtp", "Account" )'" class="btn btn-primary">
-                            Đăng nhập bằng SMS
-                        </button>
-                        
-                      
+                       
+                        <a class=" social-icon" asp-controller="Account" asp-route-returnUrl="@Model.ReturnUrl" asp-action="LoginWithFacebook"> <i class="fab fa-facebook-f"></i></a>
 
+
+
+
+
+
+                        <a class="social-icon" asp-controller="Account" asp-action="LoginWithGoogle" asp-route-returnUrl="@Model.ReturnUrl" class="fas fa-envelope"><i class="fab fa-google"></i></a>
+                       
                         
+                        
+                        
+                        
+                     @*    <button onclick="location.href='@Url.Action("SendOtp", "Account" )'" class="btn btn-primary">
+                            Đăng nhập bằng SMS
+                        </button> *@
+       
                     </div>
           
                 </form>

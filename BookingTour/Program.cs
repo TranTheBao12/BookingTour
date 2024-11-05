@@ -11,7 +11,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddDbContext<YourExistingDbContextName>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 // C?u hình Identity
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddDefaultTokenProviders()
@@ -79,10 +80,15 @@ app.UseEndpoints(endpoints =>
         areaName: "Admin",
         pattern: "Admin/{controller=Home}/{action=AccessDenied}/{id?}"); // ??nh ngh?a route cho area ADMIN
 
+    endpoints.MapAreaControllerRoute(
+    name: "HOST",
+    areaName: "Host",
+    pattern: "Host/{controller=Home}/{action=AccessDenied}/{id?}");
 
     endpoints.MapControllerRoute(
         name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}");
+        pattern: "{controller=Tours}/{action=Index}/{id?}");
+
 
 });
 

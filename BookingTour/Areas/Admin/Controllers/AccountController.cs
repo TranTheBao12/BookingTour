@@ -104,7 +104,7 @@ namespace BookingTour.Areas.Admin.Controllers
             var info = await _signInManager.GetExternalLoginInfoAsync();
             if (info == null)
             {
-                return RedirectToAction("Index1", "Home");
+                return RedirectToAction("Index", "Tours");
             }
 
             // Kiểm tra xem tài khoản đã tồn tại không
@@ -112,7 +112,7 @@ namespace BookingTour.Areas.Admin.Controllers
             if (result.Succeeded)
             {
                 // Nếu đăng nhập thành công, chuyển đến trang chính
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Tours");
             }
             else
             {
@@ -123,7 +123,7 @@ namespace BookingTour.Areas.Admin.Controllers
                 if (user != null) // Nếu tài khoản đã tồn tại, đăng nhập tài khoản đó
                 {
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Tours");
                 }
                 else // Nếu tài khoản không tồn tại, tạo tài khoản mới
                 {

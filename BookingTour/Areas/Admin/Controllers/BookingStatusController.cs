@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using BookingTour.Data;
 using BookingTour.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Text;
 
 
 namespace BookingTour.Areas.Admin.Controllers
@@ -188,7 +189,67 @@ namespace BookingTour.Areas.Admin.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        //[HttpGet]
+        //public IActionResult ExportBookingStatistics()
+        //{
+        //    var statistics = GetBookingStatistics(); // Lấy dữ liệu thống kê
+        //    var csv = new StringBuilder();
 
+        //    // Thêm tiêu đề cột
+        //    csv.AppendLine("Tháng,Tổng Doanh Thu,Số Lượt Đặt");
+
+        //    // Thêm dữ liệu vào file CSV
+        //    foreach (var item in statistics)
+        //    {
+        //        csv.AppendLine($"{item.Month},{item.TotalRevenue},{item.TotalBookings}");
+        //    }
+
+        //    // Đặt tên file
+        //    var fileName = $"BookingStatistics_{DateTime.Now:yyyyMMddHHmmss}.csv";
+        //    return File(Encoding.UTF8.GetBytes(csv.ToString()), "text/csv", fileName);
+        //}
+
+
+        public IActionResult BookingStatistics()
+        {
+            // Thống kê doanh thu và số lượt đặt tour theo các khoảng thời gian
+            var statistics = GetBookingStatistics();
+
+            // Lấy top tour được đặt nhiều nhất
+            var topBookedTours = GetTopBookedTours();
+
+            // Gửi dữ liệu đến view
+            ViewBag.TopBookedTours = topBookedTours; // Truyền dữ liệu tour vào ViewBag
+            return View(statistics);
+        }
+        private List<object> GetTopBookedTours()
+        {
+            var topTours = _context.Bookings
+                .GroupBy(b => b.IdTour)
+                .Select(g => new
+                {
+                    TourName = g.FirstOrDefault().IdTourNavigation.Name, // Lấy tên tour
+                    TotalBookings = g.Count()
+                })
+                .OrderByDescending(g => g.TotalBookings)
+                .Take(5)
+                .ToList();
+
+            return topTours.Select(t => new { t.TourName, t.TotalBookings }).ToList<object>();
+        }
+        private List<object> GetBookingStatistics()
+        {
+            var data = _context.Bookings
+                .GroupBy(b => b.BookingTime.Value.Month)
+                .Select(g => new
+                {
+                    Month = g.Key,
+                    TotalRevenue = g.Sum(b => b.IdTourNavigation.Price ), // Ví dụ tổng doanh thu
+                    TotalBookings = g.Count() // Số lượt đặt tour
+                }).ToList();
+
+            return data.Select(d => new { d.Month, d.TotalRevenue, d.TotalBookings }).ToList<object>();
+        }
         private bool BookingStatusExists(long id)
         {
             return _context.BookingStatuses.Any(e => e.IdStatus == id);

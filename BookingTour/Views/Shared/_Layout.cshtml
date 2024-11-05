@@ -4,6 +4,8 @@
 * Tempalte URI: https://untree.co/
 * License: https://creativecommons.org/licenses/by/3.0/
 */ -->
+@model BookingTour.Models.SearchTourViewModel
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -56,15 +58,14 @@
 				<a href="index.html" class="logo m-0">Tour <span class="text-primary">.</span></a>
 
 				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-					<li class="active"><a href="@Url.Action("index", "Home")">Home</a></li>
+					<li class="active"><a href="@Url.Action("index", "Tours")">Home</a></li>
 					
 					<li><a href="services.html">Services</a></li>
 					<li><a href="about.html">About</a></li>
 					<li><a href="contact.html">Contact Us</a></li>
-					<li class="has-children">
+					
 						<partial name="_LoginPartial" />
 					
-					</li>
 				</ul>
 
 				<a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
@@ -81,55 +82,62 @@
 					<div class="intro-wrap">
 						<h1 class="mb-5"><span class="d-block">Let's Enjoy Your</span> Trip In <span class="typed-words"></span></h1>
 
-						<div class="row">
+						<div class="row">	
 							<div class="col-12">
-								<form class="form">
-									<div class="row mb-2">
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
-											<select name="" id="" class="form-control custom-select">
-												<option value="">Destination</option>
-												<option value="">Peru</option>
-												<option value="">Japan</option>
-												<option value="">Thailand</option>
-												<option value="">Brazil</option>
-												<option value="">United States</option>
-												<option value="">Israel</option>
-												<option value="">China</option>
-												<option value="">Russia</option>
-											</select>
-										</div>
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-5">
-											<input type="text" class="form-control" name="daterange">
-										</div>
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-3">
-											<input type="text" class="form-control" placeholder="# of People">
-										</div>
-
-									</div>    
-									<div class="row align-items-center">
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
-											<input type="submit" class="btn btn-primary btn-block" value="Search">
-										</div>
-										<div class="col-lg-8">
-											<label class="control control--checkbox mt-3">
-												<span class="caption">Save this search</span>
-												<input type="checkbox" checked="checked" />
-												<div class="control__indicator"></div>
-											</label>
-										</div>
+								<form asp-controller="Tours" asp-action="Search" method="get" class="form-inline">
+									<div class="form-group" style="margin:5px">
+										<select name="destinationAddress" class="form-control custom-select">
+											<option value="">Chọn địa chỉ điểm đến</option>
+											@if (Model.Destinations != null )
+											{
+												foreach (var destination in Model.Destinations)
+												{
+													<option value="@destination.Address">@destination.Address</option>
+												}
+											}
+											else
+											{
+												<option value="" disabled>Không có địa điểm nào khả dụng</option>
+											}
+										</select>
 									</div>
+
+									<div class="form-group" style="margin:10px">
+										<input type="date" name="startDate" class="form-control" placeholder="Start Date" />
+									</div>
+
+									<div class="form-group" style="margin:10px">
+										<select name="tourType" class="form-control custom-select">
+											<option value="">Chọn loại tour</option>
+											@if (Model.TourTypes != null)
+											{
+												foreach (var type in Model.TourTypes)
+												{
+													<option value="@type.Name">@type.Name</option>
+												}
+											}
+											else
+											{
+												<option value="" disabled>Không có loại tour nào khả dụng</option>
+											}
+										</select>
+									</div>
+
+									<button type="submit" class="btn btn-primary" style="margin:10px">Search</button>
 								</form>
+
+
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-5">
 					<div class="slides">
-						<img src="images/hero-slider-1.jpg" alt="Image" class="img-fluid active">
-						<img src="images/hero-slider-2.jpg" alt="Image" class="img-fluid">
+						<img src="~/images/hero-slider-1.jpg" alt="Image" class="img-fluid active">
+						<img src="~/images/hero-slider-2.jpg" alt="Image" class="img-fluid">
 						<img src="~/images/hero-slider-3.jpg" alt="Image" class="img-fluid">
-						<img src="images/hero-slider-4.jpg" alt="Image" class="img-fluid">
-						<img src="images/hero-slider-5.jpg" alt="Image" class="img-fluid">
+						<img src="~/images/hero-slider-4.jpg" alt="Image" class="img-fluid">
+						<img src="~/images/hero-slider-5.jpg" alt="Image" class="img-fluid">
 					</div>
 				</div>
 			</div>
